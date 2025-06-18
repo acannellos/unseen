@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjd8g1ndsn0ys"]
+
+[ext_resource type="LightmapGIData" uid="uid://drrwn0x0yqj1t" path="res://scenes/world/test_gi.lmbake" id="1_jcu74"]
+
+[sub_resource type="Environment" id="Environment_88tpi"]
+background_mode = 1
+fog_light_energy = 0.1
+fog_density = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_jcu74"]
+lightmap_size_hint = Vector2i(104, 66)
+add_uv2 = true
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_88tpi"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0rs7f"]
+lightmap_size_hint = Vector2i(59, 156)
+add_uv2 = true
+size = Vector3(10, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3h5as"]
+albedo_color = Color(1, 0.377991, 0.31005, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fe6eb"]
+albedo_color = Color(0.293642, 0.526115, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_vvx26"]
+lightmap_size_hint = Vector2i(33, 9)
+add_uv2 = true
+inner_radius = 1.0
+outer_radius = 2.0
+
+[node name="test_gi" type="Node3D"]
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_88tpi")
+
+[node name="moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.788376, 0.615194, 0, -0.615194, 0.788376, 0, 20, 0)
+visible = false
+light_energy = 0.01
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jcu74")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_88tpi")
+
+[node name="floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+mesh = SubResource("BoxMesh_jcu74")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_88tpi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00423574, 6.92978, 0)
+light_energy = 10.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -5)
+mesh = SubResource("BoxMesh_0rs7f")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 4.5, 0)
+mesh = SubResource("BoxMesh_0rs7f")
+surface_material_override/0 = SubResource("StandardMaterial3D_3h5as")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 4.5, 0)
+mesh = SubResource("BoxMesh_0rs7f")
+surface_material_override/0 = SubResource("StandardMaterial3D_fe6eb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.423494, 0.00108586, -0.905898, 0.358998, -0.917924, -0.168927, -0.831729, -0.396755, 0.388346, 0, 3, 0)
+mesh = SubResource("TorusMesh_vvx26")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+supersampling = true
+directional = true
+environment_mode = 0
+light_data = ExtResource("1_jcu74")

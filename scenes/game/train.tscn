@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://6o4kyp2gho2g"]
+
+[ext_resource type="Script" uid="uid://dvb7wboys0hqx" path="res://scenes/game/train.gd" id="1_o8b33"]
+[ext_resource type="PackedScene" uid="uid://cfy6at1ik16lv" path="res://scenes/notes/notes.tscn" id="1_pnr43"]
+[ext_resource type="PackedScene" uid="uid://dc3g803l8bxsg" path="res://scenes/game/town.tscn" id="2_l6sq7"]
+[ext_resource type="PackedScene" uid="uid://bbmojq8j44fu7" path="res://scenes/ui/coat/coat.tscn" id="2_o8b33"]
+[ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="3_etkum"]
+[ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="3_l6sq7"]
+[ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/light_flicker.gd" id="5_gkh44"]
+
+[sub_resource type="Environment" id="Environment_cbnqe"]
+background_mode = 1
+fog_light_energy = 0.1
+fog_density = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg8lw"]
+size = Vector3(24, 1, 18)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d3hrk"]
+data = PackedVector3Array(-12, 0.5, 9, 12, 0.5, 9, -12, -0.5, 9, 12, 0.5, 9, 12, -0.5, 9, -12, -0.5, 9, 12, 0.5, -9, -12, 0.5, -9, 12, -0.5, -9, -12, 0.5, -9, -12, -0.5, -9, 12, -0.5, -9, 12, 0.5, 9, 12, 0.5, -9, 12, -0.5, 9, 12, 0.5, -9, 12, -0.5, -9, 12, -0.5, 9, -12, 0.5, -9, -12, 0.5, 9, -12, -0.5, -9, -12, 0.5, 9, -12, -0.5, 9, -12, -0.5, -9, 12, 0.5, 9, -12, 0.5, 9, 12, 0.5, -9, -12, 0.5, 9, -12, 0.5, -9, 12, 0.5, -9, -12, -0.5, 9, 12, -0.5, 9, -12, -0.5, -9, 12, -0.5, 9, 12, -0.5, -9, -12, -0.5, -9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkh44"]
+size = Vector3(5, 5, 5)
+
+[node name="train" type="Node3D" node_paths=PackedStringArray("exit_area")]
+script = ExtResource("1_o8b33")
+exit_area = NodePath("exit_area")
+town_scene = ExtResource("2_l6sq7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="notes" parent="CanvasLayer" instance=ExtResource("1_pnr43")]
+
+[node name="coat" parent="CanvasLayer" instance=ExtResource("2_o8b33")]
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cbnqe")
+
+[node name="moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.788376, 0.615194, 0, -0.615194, 0.788376, 0, 20, 0)
+light_energy = 0.01
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dg8lw")
+surface_material_override/0 = ExtResource("3_etkum")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_d3hrk")
+
+[node name="player" parent="." instance=ExtResource("3_l6sq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.90166, 1.57132, 10.0905)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 20.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 8.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+script = ExtResource("5_gkh44")
+
+[node name="exit_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.23947)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="exit_area"]
+shape = SubResource("BoxShape3D_gkh44")
