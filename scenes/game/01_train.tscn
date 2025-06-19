@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://6o4kyp2gho2g"]
+[gd_scene load_steps=10 format=3 uid="uid://6o4kyp2gho2g"]
 
-[ext_resource type="Script" uid="uid://dvb7wboys0hqx" path="res://scenes/game/train.gd" id="1_o8b33"]
-[ext_resource type="PackedScene" uid="uid://cfy6at1ik16lv" path="res://scenes/notes/notes.tscn" id="1_pnr43"]
-[ext_resource type="PackedScene" uid="uid://dc3g803l8bxsg" path="res://scenes/game/town.tscn" id="2_l6sq7"]
-[ext_resource type="PackedScene" uid="uid://bbmojq8j44fu7" path="res://scenes/ui/coat/coat.tscn" id="2_o8b33"]
+[ext_resource type="Script" uid="uid://dvb7wboys0hqx" path="res://scenes/game/scripts/train.gd" id="1_o8b33"]
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="3_etkum"]
 [ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="3_l6sq7"]
+[ext_resource type="Resource" uid="uid://dv1j63w4b0wqk" path="res://scenes/entity/train_dialogue_01.dialogue" id="3_qwiof"]
 [ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/light_flicker.gd" id="5_gkh44"]
 
 [sub_resource type="Environment" id="Environment_cbnqe"]
@@ -25,13 +23,7 @@ size = Vector3(5, 5, 5)
 [node name="train" type="Node3D" node_paths=PackedStringArray("exit_area")]
 script = ExtResource("1_o8b33")
 exit_area = NodePath("exit_area")
-town_scene = ExtResource("2_l6sq7")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="notes" parent="CanvasLayer" instance=ExtResource("1_pnr43")]
-
-[node name="coat" parent="CanvasLayer" instance=ExtResource("2_o8b33")]
+self_dialogue_01 = ExtResource("3_qwiof")
 
 [node name="env" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cbnqe")

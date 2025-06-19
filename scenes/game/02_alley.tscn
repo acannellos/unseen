@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtprq0cycwjh0"]
+
+[ext_resource type="Script" uid="uid://j8eksil8vxmt" path="res://scenes/game/scripts/alley.gd" id="1_7a65f"]
+[ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="3_dwtt1"]
+[ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="4_ix50v"]
+[ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/light_flicker.gd" id="5_whc84"]
+
+[sub_resource type="Environment" id="Environment_4pst6"]
+background_mode = 1
+fog_light_energy = 0.1
+fog_density = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_b55ew"]
+size = Vector3(14, 1, 32)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fpttn"]
+data = PackedVector3Array(-7, 0.5, 16, 7, 0.5, 16, -7, -0.5, 16, 7, 0.5, 16, 7, -0.5, 16, -7, -0.5, 16, 7, 0.5, -16, -7, 0.5, -16, 7, -0.5, -16, -7, 0.5, -16, -7, -0.5, -16, 7, -0.5, -16, 7, 0.5, 16, 7, 0.5, -16, 7, -0.5, 16, 7, 0.5, -16, 7, -0.5, -16, 7, -0.5, 16, -7, 0.5, -16, -7, 0.5, 16, -7, -0.5, -16, -7, 0.5, 16, -7, -0.5, 16, -7, -0.5, -16, 7, 0.5, 16, -7, 0.5, 16, 7, 0.5, -16, -7, 0.5, 16, -7, 0.5, -16, 7, 0.5, -16, -7, -0.5, 16, 7, -0.5, 16, -7, -0.5, -16, 7, -0.5, 16, 7, -0.5, -16, -7, -0.5, -16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpttn"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxlml"]
+size = Vector3(5, 5, 5)
+
+[node name="alley" type="Node3D" node_paths=PackedStringArray("enter_area", "exit_area")]
+script = ExtResource("1_7a65f")
+enter_area = NodePath("enter_area")
+exit_area = NodePath("exit_area")
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4pst6")
+
+[node name="moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.788376, 0.615194, 0, -0.615194, 0.788376, 0, 20, 0)
+light_energy = 0.01
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_b55ew")
+surface_material_override/0 = ExtResource("3_dwtt1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_fpttn")
+
+[node name="player" parent="." instance=ExtResource("4_ix50v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.864187, 0, 0.503171, 0, 1, 0, -0.503171, 0, 0.864187, 6.93996, 1.57132, 10.0905)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 20.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 8.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+script = ExtResource("5_whc84")
+
+[node name="enter_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.4942)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enter_area"]
+shape = SubResource("BoxShape3D_fpttn")
+
+[node name="exit_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.4145)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="exit_area"]
+shape = SubResource("BoxShape3D_fxlml")

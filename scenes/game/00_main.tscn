@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdho0bb2nt2ox"]
+[gd_scene load_steps=6 format=3 uid="uid://cdho0bb2nt2ox"]
 
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="1_llaio"]
-[ext_resource type="Script" uid="uid://6egtwlju1mg" path="res://scenes/game/main.gd" id="1_oekm8"]
-[ext_resource type="PackedScene" uid="uid://6o4kyp2gho2g" path="res://scenes/game/train.tscn" id="2_yd8kv"]
+[ext_resource type="Script" uid="uid://6egtwlju1mg" path="res://scenes/game/scripts/main.gd" id="1_oekm8"]
 
 [sub_resource type="Environment" id="Environment_oekm8"]
 background_mode = 1
@@ -17,7 +16,6 @@ data = PackedVector3Array(-12, 0.5, 9, 12, 0.5, 9, -12, -0.5, 9, 12, 0.5, 9, 12,
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_oekm8")
-play_scene = ExtResource("2_yd8kv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
