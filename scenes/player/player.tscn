@@ -1,21 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpfggxvqf6g2b"]
+[gd_scene load_steps=6 format=3 uid="uid://cpfggxvqf6g2b"]
 
 [ext_resource type="Script" uid="uid://cxujuv2fpgrd8" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Material" uid="uid://b4o8v4ya1km6j" path="res://assets/mats/mat_white.tres" id="2_dovo2"]
-[ext_resource type="Script" uid="uid://cjkaerwjn5hqf" path="res://scripts/components/dialogue_component.gd" id="3_lvxji"]
-[ext_resource type="Resource" uid="uid://bh1qjl1tcfll8" path="res://scenes/entity/hello_dialogue.dialogue" id="4_p47bc"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_qh136"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n6r0k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
-radius = 3.0
+radius = 2.0
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "light", "interact_shape")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "light", "interact_label", "interact_shape")]
 script = ExtResource("1_8afob")
-camera = NodePath("pcam/camera")
+camera = NodePath("camera")
 light = NodePath("SpotLight3D")
+interact_label = NodePath("CanvasLayer/interact_label")
 interact_shape = NodePath("interact_shape")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
@@ -25,17 +24,6 @@ surface_material_override/0 = ExtResource("2_dovo2")
 
 [node name="col" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_n6r0k")
-
-[node name="pcam" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
-
-[node name="camera" type="Camera3D" parent="pcam"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="DialogueComponent" type="Node" parent="."]
-script = ExtResource("3_lvxji")
-dialogue = ExtResource("4_p47bc")
-metadata/_custom_type_script = "uid://cjkaerwjn5hqf"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2, 0)
@@ -51,3 +39,23 @@ spot_angle_attenuation = 0.1
 [node name="interact_shape" type="ShapeCast3D" parent="."]
 shape = SubResource("SphereShape3D_lvxji")
 target_position = Vector3(0, 0, 0)
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="interact_label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -105.0
+offset_right = 51.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[f] to interact"

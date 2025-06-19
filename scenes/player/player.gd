@@ -3,6 +3,8 @@ extends CharacterBody3D
 
 @export var camera: Camera3D
 @export var light: SpotLight3D
+@export var interact_label: Label
+@export var interact_shape: ShapeCast3D
 
 var direction: Vector3
 var speed: float = 2.5
@@ -15,6 +17,7 @@ var ray_length: float = 10.0
 func _physics_process(delta: float) -> void:
 	
 	if Global.is_speaking:
+		interact_label.hide()
 		return
 
 	if not is_on_floor():
@@ -24,6 +27,16 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		interact()
+	
+	interact_label.hide()
+	for i in interact_shape.get_collision_count():
+		
+		var collider = interact_shape.get_collider(i)
+		if collider is Player:
+			continue
+		var interactable = collider.get_node_or_null("InteractableComponent")
+		if interactable:
+			interact_label.show()
 
 func handle_basic_controller() -> void:
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
@@ -56,12 +69,11 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseMotion:
 		#print("Mouse Motion at: ", event.position)
+		
 		var from = camera.project_ray_origin(event.position)
 		var to = from + camera.project_ray_normal(event.position) * ray_length
 		to.y = 0
 		light.look_at(to)
-
-@export var interact_shape: ShapeCast3D
 
 func interact() -> void:
 	for i in interact_shape.get_collision_count():

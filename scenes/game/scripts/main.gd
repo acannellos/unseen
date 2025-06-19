@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var camera: Camera3D = $pcam/camera
+@onready var camera: Camera3D = $camera
 @onready var light: SpotLight3D = $SpotLight3D
 
 @onready var light_label: Label = $CanvasLayer/light_label

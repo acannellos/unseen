@@ -88,3 +88,6 @@ supersampling = true
 directional = true
 environment_mode = 0
 light_data = ExtResource("1_jcu74")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7)

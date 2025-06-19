@@ -4,15 +4,11 @@
 [ext_resource type="Script" uid="uid://bn61va2ovt4xl" path="res://scenes/game/scripts/town.gd" id="1_klhe0"]
 [ext_resource type="PackedScene" uid="uid://bbmojq8j44fu7" path="res://scenes/ui/coat/coat.tscn" id="2_1x5wo"]
 [ext_resource type="PackedScene" uid="uid://cfy6at1ik16lv" path="res://scenes/notes/notes.tscn" id="2_qh136"]
+[ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="4_h6bvs"]
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="4_xa8uo"]
 [ext_resource type="Script" uid="uid://elbvrempoclv" path="res://scenes/world/test_interact.gd" id="5_3a8i7"]
 [ext_resource type="Script" uid="uid://bejw17crfjdit" path="res://scripts/components/interactable_component.gd" id="5_3yebw"]
 [ext_resource type="Resource" uid="uid://b16n357oao8a4" path="res://scenes/entity/intro_sign_dialogue.dialogue" id="6_at7wc"]
-
-[sub_resource type="Environment" id="Environment_n6r0k"]
-background_mode = 1
-fog_light_energy = 0.1
-fog_density = 0.05
 
 [sub_resource type="BoxMesh" id="BoxMesh_n6r0k"]
 size = Vector3(100, 1, 100)
@@ -45,12 +41,7 @@ script = ExtResource("1_klhe0")
 
 [node name="coat" parent="CanvasLayer" instance=ExtResource("2_1x5wo")]
 
-[node name="env" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_n6r0k")
-
-[node name="moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.788376, 0.615194, 0, -0.615194, 0.788376, 0, 20, 0)
-light_energy = 0.01
+[node name="env" parent="." instance=ExtResource("4_h6bvs")]
 
 [node name="floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_n6r0k")
