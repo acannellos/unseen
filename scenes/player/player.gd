@@ -13,6 +13,9 @@ var is_light_on: bool = false
 var ray_length: float = 10.0
 
 func _physics_process(delta: float) -> void:
+	
+	if Global.is_speaking:
+		return
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -42,6 +45,10 @@ func handle_basic_controller() -> void:
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
+	
+	if Global.is_speaking:
+		return
+	
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		is_light_on = !is_light_on
 		light.visible = is_light_on

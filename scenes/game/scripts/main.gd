@@ -1,7 +1,5 @@
 extends Node3D
 
-@export var play_scene: PackedScene
-
 @onready var camera: Camera3D = $pcam/camera
 @onready var light: SpotLight3D = $SpotLight3D
 
@@ -28,4 +26,4 @@ func _input(event: InputEvent) -> void:
 		light.look_at(to)
 	
 	if Input.is_action_just_pressed("play"):
-		get_tree().change_scene_to_packed(play_scene)
+		Scenes.change_scene("train")
