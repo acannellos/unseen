@@ -11,11 +11,11 @@ func _ready() -> void:
 
 func _on_dialogue_started(resource: DialogueResource) -> void:
 	is_speaking = true
-	print("you did it")
+	print(is_speaking)
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	is_speaking = false
-	print("you did it")
+	print(is_speaking)
 
 var has_moved: bool = false
 var flag_train_dialogue_01: bool = false
