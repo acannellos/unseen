@@ -39,8 +39,11 @@ data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q4obl"]
 data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
 
-[node name="alley" type="Node3D" node_paths=PackedStringArray("enter_area", "exit_area")]
+[node name="alley" type="Node3D" node_paths=PackedStringArray("player", "spawn_pos_train", "spawn_pos_town", "enter_area", "exit_area")]
 script = ExtResource("1_7a65f")
+player = NodePath("player")
+spawn_pos_train = NodePath("spawn_pos/spawn_from_train")
+spawn_pos_town = NodePath("spawn_pos/spawn_from_town")
 enter_area = NodePath("enter_area")
 exit_area = NodePath("exit_area")
 
@@ -198,3 +201,11 @@ spot_angle_attenuation = 0.1
 script = ExtResource("5_whc84")
 
 [node name="objects" type="Node" parent="."]
+
+[node name="spawn_pos" type="Node" parent="."]
+
+[node name="spawn_from_train" type="Marker3D" parent="spawn_pos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11)
+
+[node name="spawn_from_town" type="Marker3D" parent="spawn_pos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11)

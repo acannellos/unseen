@@ -26,4 +26,4 @@ func _input(event: InputEvent) -> void:
 		light.look_at(to)
 	
 	if Input.is_action_just_pressed("play"):
-		Scenes.change_scene("train")
+		Scenes.change_scene("main", "train")

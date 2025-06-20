@@ -7,4 +7,4 @@ func _ready() -> void:
 
 func _on_body_entered(body) -> void:
 	await get_tree().physics_frame
-	Scenes.change_scene("alley")
+	Scenes.change_scene("town", "alley")

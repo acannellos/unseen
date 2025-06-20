@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpfggxvqf6g2b"]
+[gd_scene load_steps=8 format=3 uid="uid://cpfggxvqf6g2b"]
 
 [ext_resource type="Script" uid="uid://cxujuv2fpgrd8" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Material" uid="uid://b4o8v4ya1km6j" path="res://assets/mats/mat_white.tres" id="2_dovo2"]
@@ -10,12 +10,19 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
 radius = 2.0
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "light", "interact_label", "interact_shape")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dovo2"]
+size = Vector3(1, 10, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dovo2"]
+radius = 1.5
+
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "light", "interact_label", "interact_shape", "visibility_check_body")]
 script = ExtResource("1_8afob")
 camera = NodePath("camera")
 light = NodePath("SpotLight3D")
 interact_label = NodePath("CanvasLayer/interact_label")
 interact_shape = NodePath("interact_shape")
+visibility_check_body = NodePath("visibility_check_body")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 layers = 2
@@ -39,6 +46,21 @@ spot_angle_attenuation = 0.1
 [node name="interact_shape" type="ShapeCast3D" parent="."]
 shape = SubResource("SphereShape3D_lvxji")
 target_position = Vector3(0, 0, 0)
+collision_mask = 2
+
+[node name="visibility_check_body" type="StaticBody3D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="visibility_check_body"]
+shape = SubResource("BoxShape3D_dovo2")
+
+[node name="visibility_check_shape" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+shape = SubResource("SphereShape3D_dovo2")
+target_position = Vector3(0, 0, 0)
+collision_mask = 32
 
 [node name="camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)

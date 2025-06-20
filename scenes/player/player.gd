@@ -6,6 +6,9 @@ extends CharacterBody3D
 @export var interact_label: Label
 @export var interact_shape: ShapeCast3D
 
+#@export var visibility_check_shape: ShapeCast3D
+@export var visibility_check_body: StaticBody3D
+
 var direction: Vector3
 var speed: float = 2.5
 var acceleration: float = 0.25
@@ -37,6 +40,14 @@ func _physics_process(delta: float) -> void:
 		var interactable = collider.get_node_or_null("InteractableComponent")
 		if interactable:
 			interact_label.show()
+			if Input.is_action_just_pressed("interact"):
+				interactable.interact_with()
+				#interact()
+	
+	#for i in visibility_check_shape.get_collision_count():
+		#
+		#var collider = visibility_check_shape.get_collider(i)
+		#collider.show_box()
 
 func handle_basic_controller() -> void:
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
@@ -74,17 +85,20 @@ func _input(event: InputEvent) -> void:
 		var to = from + camera.project_ray_normal(event.position) * ray_length
 		to.y = global_position.y
 		light.look_at(to)
+		
+		#visibility_check_shape.global_position = to
+		visibility_check_body.global_position = to
 
 func interact() -> void:
-	for i in interact_shape.get_collision_count():
-		
-		var collider = interact_shape.get_collider(i)
-
-		if collider is Player:
-			continue
-
-		var interactable = collider.get_node_or_null("InteractableComponent")
-		if interactable:
-			interactable.interact_with()
+	#for i in interact_shape.get_collision_count():
+		#
+		#var collider = interact_shape.get_collider(i)
+#
+		#if collider is Player:
+			#continue
+#
+		#var interactable = collider.get_node_or_null("InteractableComponent")
+		#if interactable:
+			#interactable.interact_with()
 		
 	pass

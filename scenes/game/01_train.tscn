@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://6o4kyp2gho2g"]
+[gd_scene load_steps=30 format=3 uid="uid://6o4kyp2gho2g"]
 
 [ext_resource type="Script" uid="uid://dvb7wboys0hqx" path="res://scenes/game/scripts/train.gd" id="1_o8b33"]
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="3_3p7xb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://elbvrempoclv" path="res://scenes/world/test_interact.gd" id="7_hhamy"]
 [ext_resource type="Resource" uid="uid://b16n357oao8a4" path="res://scenes/entity/intro_sign_dialogue.dialogue" id="8_j8erv"]
 [ext_resource type="Script" uid="uid://bejw17crfjdit" path="res://scripts/components/interactable_component.gd" id="9_t1try"]
+[ext_resource type="Script" uid="uid://bq2ke3fpxkis5" path="res://scenes/world/test_visible_body.gd" id="10_j8erv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gkh44"]
 size = Vector3(4, 5, 5)
@@ -58,14 +59,19 @@ size = Vector3(60, 8, 8)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ef2u0"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_j8erv"]
+radius = 1.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_nkto6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycsv1"]
 albedo_color = Color(0, 0.633333, 1, 1)
 
-[node name="train" type="Node3D" node_paths=PackedStringArray("exit_area")]
+[node name="train" type="Node3D" node_paths=PackedStringArray("player", "exit_area", "spawn_pos_alley")]
 script = ExtResource("1_o8b33")
+player = NodePath("player")
 exit_area = NodePath("exit_area")
+spawn_pos_alley = NodePath("spawn_pos/spawn_from_alley")
 self_dialogue_01 = ExtResource("3_qwiof")
 
 [node name="env" parent="." instance=ExtResource("3_3p7xb")]
@@ -221,15 +227,17 @@ script = ExtResource("5_gkh44")
 
 [node name="objects" type="Node" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="objects" node_paths=PackedStringArray("interactable")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="objects" node_paths=PackedStringArray("interactable", "spinning_box")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -4)
 mesh = SubResource("BoxMesh_secdc")
 skeleton = NodePath("../../world")
 script = ExtResource("7_hhamy")
 interactable = NodePath("StaticBody3D/InteractableComponent")
+spinning_box = NodePath("visible_spinning_box/spinning_box")
 dialogue = ExtResource("8_j8erv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="objects/MeshInstance3D"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objects/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ef2u0")
@@ -238,7 +246,20 @@ shape = SubResource("ConcavePolygonShape3D_ef2u0")
 script = ExtResource("9_t1try")
 metadata/_custom_type_script = "uid://bejw17crfjdit"
 
-[node name="spinning_box" type="MeshInstance3D" parent="objects/MeshInstance3D"]
+[node name="visible_spinning_box" type="ShapeCast3D" parent="objects/MeshInstance3D"]
 transform = Transform3D(0.282843, 0.2, 0.2, 0, 0.282843, -0.282843, -0.282843, 0.2, 0.2, 0, 1, 0)
+shape = SubResource("SphereShape3D_j8erv")
+target_position = Vector3(0, 0, 0)
+collision_mask = 32
+script = ExtResource("10_j8erv")
+
+[node name="spinning_box" type="MeshInstance3D" parent="objects/MeshInstance3D/visible_spinning_box"]
+visible = false
 mesh = SubResource("BoxMesh_nkto6")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ycsv1")
+
+[node name="spawn_pos" type="Node" parent="."]
+
+[node name="spawn_from_alley" type="Marker3D" parent="spawn_pos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)

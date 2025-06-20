@@ -8,12 +8,12 @@ var scene_dictionary  = {
 
 signal change_scene_requested
 
-var current_scene: String = ""
+var last_scene: String = ""
 
 func _ready() -> void:
 	change_scene_requested.connect(change_scene)
 	
-func change_scene(scene_name: String) -> void:
-	current_scene = get_tree().current_scene.scene_file_path
-	scene_name = scene_dictionary.get(scene_name, scene_name)
-	get_tree().change_scene_to_file(scene_name)
+func change_scene(from_scene: String, to_scene: String) -> void:
+	last_scene = from_scene
+	var to_scene_path = scene_dictionary.get(to_scene)
+	get_tree().change_scene_to_file(to_scene_path)
