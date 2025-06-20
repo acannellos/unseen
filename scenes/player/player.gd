@@ -72,7 +72,7 @@ func _input(event: InputEvent) -> void:
 		
 		var from = camera.project_ray_origin(event.position)
 		var to = from + camera.project_ray_normal(event.position) * ray_length
-		to.y = 0
+		to.y = global_position.y
 		light.look_at(to)
 
 func interact() -> void:

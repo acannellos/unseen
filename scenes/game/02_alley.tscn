@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtprq0cycwjh0"]
+[gd_scene load_steps=17 format=3 uid="uid://dtprq0cycwjh0"]
 
 [ext_resource type="Script" uid="uid://j8eksil8vxmt" path="res://scenes/game/scripts/alley.gd" id="1_7a65f"]
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="2_7a65f"]
@@ -21,6 +21,24 @@ data = PackedVector3Array(-7, 0.5, 16, 7, 0.5, 16, -7, -0.5, 16, 7, 0.5, 16, 7, 
 [sub_resource type="BoxMesh" id="BoxMesh_ii5bd"]
 size = Vector3(8, 8, 32)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7a65f"]
+data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l1gjr"]
+data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dwtt1"]
+data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ix50v"]
+data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_whc84"]
+data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q4obl"]
+data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
+
 [node name="alley" type="Node3D" node_paths=PackedStringArray("enter_area", "exit_area")]
 script = ExtResource("1_7a65f")
 enter_area = NodePath("enter_area")
@@ -30,43 +48,6 @@ exit_area = NodePath("exit_area")
 
 [node name="player" parent="." instance=ExtResource("4_ix50v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.864187, 0, 0.503171, 0, 1, 0, -0.503171, 0, 0.864187, 4.93996, 1.57132, 10.0905)
-light_energy = 16.0
-shadow_enabled = true
-spot_range = 20.0
-spot_attenuation = 0.1
-spot_angle = 20.0
-spot_angle_attenuation = 0.1
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="."]
-transform = Transform3D(0.999993, 0, 0.00366539, 0, 1, 0, -0.00366539, 0, 0.999993, -0.06004, 1.57132, 33.0905)
-light_energy = 16.0
-shadow_enabled = true
-spot_range = 20.0
-spot_attenuation = 0.1
-spot_angle = 20.0
-spot_angle_attenuation = 0.1
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.999993, 0, -0.0036653, 0, 1, 0, 0.0036653, 0, -0.999993, -0.06004, 1.57132, -23.9095)
-light_energy = 16.0
-shadow_enabled = true
-spot_range = 20.0
-spot_attenuation = 0.1
-spot_angle = 20.0
-spot_angle_attenuation = 0.1
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
-light_energy = 16.0
-shadow_enabled = true
-spot_range = 8.0
-spot_attenuation = 0.1
-spot_angle = 20.0
-spot_angle_attenuation = 0.1
-script = ExtResource("5_whc84")
 
 [node name="enter_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.5942)
@@ -121,22 +102,99 @@ shape = SubResource("ConcavePolygonShape3D_fpttn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
 mesh = SubResource("BoxMesh_ii5bd")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="world/wall_east"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/wall_east/StaticBody3D"]
+visible = false
+shape = SubResource("ConcavePolygonShape3D_7a65f")
+
 [node name="wall_west" type="MeshInstance3D" parent="world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, 0)
 mesh = SubResource("BoxMesh_ii5bd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world/wall_west"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/wall_west/StaticBody3D"]
+visible = false
+shape = SubResource("ConcavePolygonShape3D_l1gjr")
 
 [node name="wall_west2" type="MeshInstance3D" parent="world"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 4, 17)
 mesh = SubResource("BoxMesh_ii5bd")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="world/wall_west2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/wall_west2/StaticBody3D"]
+visible = false
+shape = SubResource("ConcavePolygonShape3D_dwtt1")
+
 [node name="wall_west3" type="MeshInstance3D" parent="world"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18, 4, 17)
 mesh = SubResource("BoxMesh_ii5bd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world/wall_west3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/wall_west3/StaticBody3D"]
+visible = false
+shape = SubResource("ConcavePolygonShape3D_ix50v")
 
 [node name="wall_west4" type="MeshInstance3D" parent="world"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 4, -17)
 mesh = SubResource("BoxMesh_ii5bd")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="world/wall_west4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/wall_west4/StaticBody3D"]
+visible = false
+shape = SubResource("ConcavePolygonShape3D_whc84")
+
 [node name="wall_west5" type="MeshInstance3D" parent="world"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18, 4, -17)
 mesh = SubResource("BoxMesh_ii5bd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world/wall_west5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/wall_west5/StaticBody3D"]
+visible = false
+shape = SubResource("ConcavePolygonShape3D_q4obl")
+
+[node name="lights" type="Node" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="lights"]
+transform = Transform3D(0.864187, 0, 0.503171, 0, 1, 0, -0.503171, 0, 0.864187, 4.93996, 1.57132, 10.0905)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 20.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="lights"]
+transform = Transform3D(0.999993, 0, 0.00366539, 0, 1, 0, -0.00366539, 0, 0.999993, -0.06004, 1.57132, 33.0905)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 20.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="lights"]
+transform = Transform3D(-0.999993, 0, -0.0036653, 0, 1, 0, 0.0036653, 0, -0.999993, -0.06004, 1.57132, -23.9095)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 20.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 8.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+script = ExtResource("5_whc84")
+
+[node name="objects" type="Node" parent="."]
