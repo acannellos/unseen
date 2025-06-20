@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6sfdowbmipi"]
+
+[ext_resource type="Script" uid="uid://di6xbq2660ivi" path="res://scripts/components/visibility_component.gd" id="1_w4tul"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w4tul"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_w4tul")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_w4tul")

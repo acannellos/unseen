@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 @export var interactable: InteractableComponent
-@onready var spinning_box: MeshInstance3D = $spinning_box
+@export var spinning_box: MeshInstance3D
 
 @export var dialogue: DialogueResource
 

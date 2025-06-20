@@ -1,9 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://dc3g803l8bxsg"]
+[gd_scene load_steps=32 format=3 uid="uid://dc3g803l8bxsg"]
 
 [ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="1_d0qum"]
 [ext_resource type="Script" uid="uid://bn61va2ovt4xl" path="res://scenes/game/scripts/town.gd" id="1_klhe0"]
-[ext_resource type="PackedScene" uid="uid://bbmojq8j44fu7" path="res://scenes/ui/coat/coat.tscn" id="2_1x5wo"]
-[ext_resource type="PackedScene" uid="uid://cfy6at1ik16lv" path="res://scenes/notes/notes.tscn" id="2_qh136"]
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="4_h6bvs"]
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="4_xa8uo"]
 
@@ -93,10 +91,6 @@ script = ExtResource("1_klhe0")
 exit_area = NodePath("exit_area")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="notes" parent="CanvasLayer" instance=ExtResource("2_qh136")]
-
-[node name="coat" parent="CanvasLayer" instance=ExtResource("2_1x5wo")]
 
 [node name="env" parent="." instance=ExtResource("4_h6bvs")]
 
