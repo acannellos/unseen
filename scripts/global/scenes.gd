@@ -1,18 +1,20 @@
 extends Node
 
+var SCENE_XFER_SCENE = preload("res://scenes/ui/scene_xfer.tscn")
+var scene_xfer: Control
+
 var scene_dictionary  = {
 	"train" : "res://scenes/game/01_train.tscn",
 	"alley" : "res://scenes/game/02_alley.tscn",
 	"town" : "res://scenes/game/03_town.tscn",
 }
 
-signal change_scene_requested
-
 var last_scene: String = ""
 
 func _ready() -> void:
-	change_scene_requested.connect(change_scene)
-	
+	scene_xfer = SCENE_XFER_SCENE.instantiate()
+	add_child(scene_xfer)
+
 func change_scene(from_scene: String, to_scene: String) -> void:
 	last_scene = from_scene
 	var to_scene_path = scene_dictionary.get(to_scene)

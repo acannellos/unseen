@@ -1,1 +1,2 @@
-extends Node
+class_name VisibilityComponent
+extends Area3D

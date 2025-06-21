@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ynrpsrc0dwl"]
+
+[ext_resource type="Script" uid="uid://dgbjtfm2ygov5" path="res://scenes/player/flashlight.gd" id="1_fcwsx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcwsx"]
+size = Vector3(2, 10, 10)
+
+[node name="flashlight" type="SpotLight3D" node_paths=PackedStringArray("area_3d")]
+light_energy = 50.0
+shadow_enabled = true
+shadow_caster_mask = 4294966273
+spot_range = 8.0
+spot_attenuation = 0.2
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+script = ExtResource("1_fcwsx")
+area_3d = NodePath("Area3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_fcwsx")

@@ -95,7 +95,7 @@ exit_area = NodePath("exit_area")
 [node name="env" parent="." instance=ExtResource("4_h6bvs")]
 
 [node name="player" parent="." instance=ExtResource("1_d0qum")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 26.1082)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 29.1082)
 
 [node name="exit_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.4855)
