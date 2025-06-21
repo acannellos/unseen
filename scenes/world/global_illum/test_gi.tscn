@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bjd8g1ndsn0ys"]
 
-[ext_resource type="LightmapGIData" uid="uid://drrwn0x0yqj1t" path="res://scenes/world/test_gi.lmbake" id="1_jcu74"]
+[ext_resource type="LightmapGIData" uid="uid://drrwn0x0yqj1t" path="res://scenes/world/global_illum/test_gi.lmbake" id="1_jcu74"]
 
 [sub_resource type="Environment" id="Environment_88tpi"]
 background_mode = 1

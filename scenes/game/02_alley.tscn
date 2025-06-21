@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="2_7a65f"]
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="3_dwtt1"]
 [ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="4_ix50v"]
-[ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/light_flicker.gd" id="5_whc84"]
+[ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/scripts/light_flicker.gd" id="5_whc84"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fpttn"]
 size = Vector3(5, 5, 5)
@@ -39,9 +39,8 @@ data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q4obl"]
 data = PackedVector3Array(-4, 4, 16, 4, 4, 16, -4, -4, 16, 4, 4, 16, 4, -4, 16, -4, -4, 16, 4, 4, -16, -4, 4, -16, 4, -4, -16, -4, 4, -16, -4, -4, -16, 4, -4, -16, 4, 4, 16, 4, 4, -16, 4, -4, 16, 4, 4, -16, 4, -4, -16, 4, -4, 16, -4, 4, -16, -4, 4, 16, -4, -4, -16, -4, 4, 16, -4, -4, 16, -4, -4, -16, 4, 4, 16, -4, 4, 16, 4, 4, -16, -4, 4, 16, -4, 4, -16, 4, 4, -16, -4, -4, 16, 4, -4, 16, -4, -4, -16, 4, -4, 16, 4, -4, -16, -4, -4, -16)
 
-[node name="alley" type="Node3D" node_paths=PackedStringArray("player", "spawn_pos_train", "spawn_pos_town", "enter_area", "exit_area")]
+[node name="alley" type="Node3D" node_paths=PackedStringArray("spawn_pos_train", "spawn_pos_town", "enter_area", "exit_area")]
 script = ExtResource("1_7a65f")
-player = NodePath("player")
 spawn_pos_train = NodePath("spawn_pos/spawn_from_train")
 spawn_pos_town = NodePath("spawn_pos/spawn_from_town")
 enter_area = NodePath("enter_area")

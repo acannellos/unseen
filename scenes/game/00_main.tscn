@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdho0bb2nt2ox"]
+[gd_scene load_steps=7 format=3 uid="uid://cdho0bb2nt2ox"]
 
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="1_llaio"]
 [ext_resource type="Script" uid="uid://6egtwlju1mg" path="res://scenes/game/scripts/main.gd" id="1_oekm8"]
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="2_kt8vo"]
+[ext_resource type="PackedScene" uid="uid://b3ynrpsrc0dwl" path="res://scenes/player/flashlight.tscn" id="4_m4x3m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yd8kv"]
 size = Vector3(24, 1, 18)
@@ -10,8 +11,9 @@ size = Vector3(24, 1, 18)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uaf1y"]
 data = PackedVector3Array(-12, 0.5, 9, 12, 0.5, 9, -12, -0.5, 9, 12, 0.5, 9, 12, -0.5, 9, -12, -0.5, 9, 12, 0.5, -9, -12, 0.5, -9, 12, -0.5, -9, -12, 0.5, -9, -12, -0.5, -9, 12, -0.5, -9, 12, 0.5, 9, 12, 0.5, -9, 12, -0.5, 9, 12, 0.5, -9, 12, -0.5, -9, 12, -0.5, 9, -12, 0.5, -9, -12, 0.5, 9, -12, -0.5, -9, -12, 0.5, 9, -12, -0.5, 9, -12, -0.5, -9, 12, 0.5, 9, -12, 0.5, 9, 12, 0.5, -9, -12, 0.5, 9, -12, 0.5, -9, 12, 0.5, -9, -12, -0.5, 9, 12, -0.5, 9, -12, -0.5, -9, 12, -0.5, 9, 12, -0.5, -9, -12, -0.5, -9)
 
-[node name="main" type="Node3D"]
+[node name="main" type="Node3D" node_paths=PackedStringArray("light_label")]
 script = ExtResource("1_oekm8")
+light_label = NodePath("CanvasLayer/light_label")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -27,7 +29,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Left Click to use [flashlight]"
+text = "[Left Click] to use flashlight"
 
 [node name="env" parent="." instance=ExtResource("2_kt8vo")]
 
@@ -43,16 +45,9 @@ shape = SubResource("ConcavePolygonShape3D_uaf1y")
 [node name="camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="flashlight" parent="." instance=ExtResource("4_m4x3m")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
 visible = false
-light_energy = 50.0
-shadow_enabled = true
-shadow_caster_mask = 4294966273
-spot_range = 8.0
-spot_attenuation = 0.2
-spot_angle = 20.0
-spot_angle_attenuation = 0.1
 
 [node name="play_label" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.601495, 3.89379)

@@ -3,7 +3,7 @@
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://csmwwvunwglt3"
-path.bptc="res://.godot/imported/test_gi.exr-b1f42db8db231a58c54a9a907541d84a.bptc.ctexarray"
+path.bptc="res://.godot/imported/test_gi.exr-756500c034c222970225373aeaafbfbf.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/world/test_gi.exr"
-dest_files=["res://.godot/imported/test_gi.exr-b1f42db8db231a58c54a9a907541d84a.bptc.ctexarray"]
+source_file="res://scenes/world/global_illum/test_gi.exr"
+dest_files=["res://.godot/imported/test_gi.exr-756500c034c222970225373aeaafbfbf.bptc.ctexarray"]
 
 [params]
 

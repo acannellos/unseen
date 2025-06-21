@@ -1,15 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://6o4kyp2gho2g"]
+[gd_scene load_steps=33 format=3 uid="uid://6o4kyp2gho2g"]
 
 [ext_resource type="Script" uid="uid://dvb7wboys0hqx" path="res://scenes/game/scripts/train.gd" id="1_o8b33"]
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="3_3p7xb"]
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="3_etkum"]
 [ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="3_l6sq7"]
-[ext_resource type="Resource" uid="uid://dv1j63w4b0wqk" path="res://scenes/entity/train_dialogue_01.dialogue" id="3_qwiof"]
-[ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/light_flicker.gd" id="5_gkh44"]
-[ext_resource type="Script" uid="uid://elbvrempoclv" path="res://scenes/world/test_interact.gd" id="7_hhamy"]
-[ext_resource type="Resource" uid="uid://b16n357oao8a4" path="res://scenes/entity/intro_sign_dialogue.dialogue" id="8_j8erv"]
+[ext_resource type="Resource" uid="uid://dv1j63w4b0wqk" path="res://dialogue/train_dialogue_01.dialogue" id="3_qwiof"]
+[ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/scripts/light_flicker.gd" id="5_gkh44"]
+[ext_resource type="Script" uid="uid://elbvrempoclv" path="res://scenes/world/scripts/test_interact.gd" id="7_hhamy"]
+[ext_resource type="Resource" uid="uid://b16n357oao8a4" path="res://dialogue/intro_sign_dialogue.dialogue" id="8_j8erv"]
 [ext_resource type="Script" uid="uid://bejw17crfjdit" path="res://scripts/components/interactable_component.gd" id="9_t1try"]
-[ext_resource type="Script" uid="uid://bq2ke3fpxkis5" path="res://scenes/world/test_visible_body.gd" id="10_j8erv"]
+[ext_resource type="Script" uid="uid://bq2ke3fpxkis5" path="res://scenes/world/scripts/test_visible_body.gd" id="10_j8erv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gkh44"]
 size = Vector3(4, 5, 5)
@@ -18,6 +18,9 @@ size = Vector3(4, 5, 5)
 size = Vector3(24, 1, 18)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d3hrk"]
+data = PackedVector3Array(-12, 0.5, 9, 12, 0.5, 9, -12, -0.5, 9, 12, 0.5, 9, 12, -0.5, 9, -12, -0.5, 9, 12, 0.5, -9, -12, 0.5, -9, 12, -0.5, -9, -12, 0.5, -9, -12, -0.5, -9, 12, -0.5, -9, 12, 0.5, 9, 12, 0.5, -9, 12, -0.5, 9, 12, 0.5, -9, 12, -0.5, -9, 12, -0.5, 9, -12, 0.5, -9, -12, 0.5, 9, -12, -0.5, -9, -12, 0.5, 9, -12, -0.5, 9, -12, -0.5, -9, 12, 0.5, 9, -12, 0.5, 9, 12, 0.5, -9, -12, 0.5, 9, -12, 0.5, -9, 12, 0.5, -9, -12, -0.5, 9, 12, -0.5, 9, -12, -0.5, -9, 12, -0.5, 9, 12, -0.5, -9, -12, -0.5, -9)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j8erv"]
 data = PackedVector3Array(-12, 0.5, 9, 12, 0.5, 9, -12, -0.5, 9, 12, 0.5, 9, 12, -0.5, 9, -12, -0.5, 9, 12, 0.5, -9, -12, 0.5, -9, 12, -0.5, -9, -12, 0.5, -9, -12, -0.5, -9, 12, -0.5, -9, 12, 0.5, 9, 12, 0.5, -9, 12, -0.5, 9, 12, 0.5, -9, 12, -0.5, -9, 12, -0.5, 9, -12, 0.5, -9, -12, 0.5, 9, -12, -0.5, -9, -12, 0.5, 9, -12, -0.5, 9, -12, -0.5, -9, 12, 0.5, 9, -12, 0.5, 9, 12, 0.5, -9, -12, 0.5, 9, -12, 0.5, -9, 12, 0.5, -9, -12, -0.5, 9, 12, -0.5, 9, -12, -0.5, -9, 12, -0.5, 9, 12, -0.5, -9, -12, -0.5, -9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q3b41"]
@@ -67,9 +70,12 @@ radius = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycsv1"]
 albedo_color = Color(0, 0.633333, 1, 1)
 
-[node name="train" type="Node3D" node_paths=PackedStringArray("player", "exit_area", "spawn_pos_alley")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8erv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j8erv"]
+
+[node name="train" type="Node3D" node_paths=PackedStringArray("exit_area", "spawn_pos_alley")]
 script = ExtResource("1_o8b33")
-player = NodePath("player")
 exit_area = NodePath("exit_area")
 spawn_pos_alley = NodePath("spawn_pos/spawn_from_alley")
 self_dialogue_01 = ExtResource("3_qwiof")
@@ -81,6 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="exit_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.2395)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit_area"]
 shape = SubResource("BoxShape3D_gkh44")
@@ -103,6 +110,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
 mesh = SubResource("BoxMesh_dg8lw")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_etkum")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world/floor_alley"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/floor_alley/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j8erv")
 
 [node name="platform" type="MeshInstance3D" parent="world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 12)
@@ -227,7 +239,7 @@ script = ExtResource("5_gkh44")
 
 [node name="objects" type="Node" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="objects" node_paths=PackedStringArray("interactable", "spinning_box")]
+[node name="test_static_box" type="MeshInstance3D" parent="objects" node_paths=PackedStringArray("interactable", "spinning_box")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -4)
 mesh = SubResource("BoxMesh_secdc")
 skeleton = NodePath("../../world")
@@ -236,30 +248,43 @@ interactable = NodePath("StaticBody3D/InteractableComponent")
 spinning_box = NodePath("visible_spinning_box/spinning_box")
 dialogue = ExtResource("8_j8erv")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="objects/MeshInstance3D"]
-collision_layer = 3
+[node name="StaticBody3D" type="StaticBody3D" parent="objects/test_static_box"]
+collision_layer = 35
+collision_mask = 33
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="objects/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objects/test_static_box/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ef2u0")
 
-[node name="InteractableComponent" type="Node" parent="objects/MeshInstance3D/StaticBody3D"]
+[node name="InteractableComponent" type="Node" parent="objects/test_static_box/StaticBody3D"]
 script = ExtResource("9_t1try")
 metadata/_custom_type_script = "uid://bejw17crfjdit"
 
-[node name="visible_spinning_box" type="ShapeCast3D" parent="objects/MeshInstance3D"]
+[node name="visible_spinning_box" type="ShapeCast3D" parent="objects/test_static_box"]
 transform = Transform3D(0.282843, 0.2, 0.2, 0, 0.282843, -0.282843, -0.282843, 0.2, 0.2, 0, 1, 0)
 shape = SubResource("SphereShape3D_j8erv")
 target_position = Vector3(0, 0, 0)
 collision_mask = 32
 script = ExtResource("10_j8erv")
 
-[node name="spinning_box" type="MeshInstance3D" parent="objects/MeshInstance3D/visible_spinning_box"]
+[node name="spinning_box" type="MeshInstance3D" parent="objects/test_static_box/visible_spinning_box"]
 visible = false
 mesh = SubResource("BoxMesh_nkto6")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ycsv1")
 
+[node name="Area3D" type="Area3D" parent="objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+visible = false
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objects/Area3D"]
+shape = SubResource("BoxShape3D_j8erv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="objects/Area3D"]
+mesh = SubResource("BoxMesh_j8erv")
+
 [node name="spawn_pos" type="Node" parent="."]
 
 [node name="spawn_from_alley" type="Marker3D" parent="spawn_pos"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7.9)
