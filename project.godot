@@ -21,6 +21,8 @@ config/icon="res://assets/icon.svg"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Global="*res://scripts/global/global.gd"
 Scenes="*res://scripts/global/scenes.gd"
+Events="*res://scripts/global/events.gd"
+Audio="*res://scripts/global/audio.gd"
 
 [editor_plugins]
 

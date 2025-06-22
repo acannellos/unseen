@@ -1,13 +1,19 @@
 extends SpotLight3D
 
 @export var area_3d: Area3D
+@export var tex_light_on: TextureRect
+@export var tex_light_off: TextureRect
 
 var camera: Camera3D
 var ray_length: float = 10.0
 
 func _ready() -> void:
 	camera = get_viewport().get_camera_3d()
-	visible = Global.is_light_on
+	set_all_lights()
+	
+	if not Global.flag_train_dialogue_01:
+		Global.is_light_on = false
+		set_all_lights()
 
 	area_3d.connect("area_entered", _on_area_entered)
 	area_3d.connect("area_exited", _on_area_exited)
@@ -23,11 +29,13 @@ func _on_area_exited(_area) -> void:
 
 func _physics_process(delta: float) -> void:
 	var overlapping_areas = area_3d.get_overlapping_areas()
-	for overlapping_area in overlapping_areas:
-		if Global.is_light_on:
-			overlapping_area.show()
-		else:
-			overlapping_area.hide()
+	
+	if overlapping_areas:
+		Events.area_overlapped.emit()
+	
+		for overlapping_area in overlapping_areas:
+			if Global.is_light_on and (overlapping_area is InvisibleArea or overlapping_area is InvisibleSign):
+				overlapping_area.count_overlaps += 1
 
 func _input(event: InputEvent) -> void:
 	
@@ -36,7 +44,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		Global.is_light_on = !Global.is_light_on
-		visible = Global.is_light_on
+		set_all_lights()
 	
 	if event is InputEventMouseMotion:		
 		var from = camera.project_ray_origin(event.position)
@@ -48,3 +56,8 @@ func _input(event: InputEvent) -> void:
 			to.y = 0.0
 		
 		look_at(to)
+
+func set_all_lights() -> void:
+	visible = Global.is_light_on
+	tex_light_on.visible = Global.is_light_on
+	tex_light_off.visible = !Global.is_light_on
