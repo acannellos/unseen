@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpfggxvqf6g2b"]
+[gd_scene load_steps=8 format=3 uid="uid://cpfggxvqf6g2b"]
 
 [ext_resource type="Script" uid="uid://cxujuv2fpgrd8" path="res://scenes/player/scripts/player.gd" id="1_8afob"]
 [ext_resource type="Material" uid="uid://b4o8v4ya1km6j" path="res://assets/mats/mat_white.tres" id="2_dovo2"]
 [ext_resource type="PackedScene" uid="uid://b3ynrpsrc0dwl" path="res://scenes/player/flashlight.tscn" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://di3aseerpyefl" path="res://scenes/player/scripts/interact_shape.gd" id="3_lvxji"]
-[ext_resource type="AudioStream" uid="uid://cc82tf486w7f3" path="res://scenes/player/assets/footsteps.mp3" id="5_p47bc"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_qh136"]
 
@@ -13,9 +12,10 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
 radius = 2.0
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("footsteps")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("footsteps", "timer")]
 script = ExtResource("1_8afob")
-footsteps = NodePath("footsteps")
+footsteps = NodePath("")
+timer = NodePath("Timer")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 layers = 2
@@ -37,7 +37,6 @@ script = ExtResource("3_lvxji")
 [node name="flashlight" parent="." instance=ExtResource("3_gmlin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="footsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_p47bc")
-volume_db = -16.0
-autoplay = true
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
