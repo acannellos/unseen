@@ -20,7 +20,6 @@ func _physics_process(delta: float) -> void:
 		hide()
 		body.set_collision_layer_value(2, false)
 	
-	await get_tree().physics_frame
 	count_overlaps = 0
 
 func _on_interacted() -> void:

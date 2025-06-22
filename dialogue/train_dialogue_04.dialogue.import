@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ck0s5modrtavn"
+path="res://.godot/imported/train_dialogue_04.dialogue-c4bb69de293b2bbc38392ba70fe1586a.tres"
+
+[deps]
+
+source_file="res://dialogue/train_dialogue_04.dialogue"
+dest_files=["res://.godot/imported/train_dialogue_04.dialogue-c4bb69de293b2bbc38392ba70fe1586a.tres"]
+
+[params]
+
+defaults=true

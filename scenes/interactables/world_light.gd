@@ -1,3 +1,4 @@
+class_name WorldLight
 extends SpotLight3D
 
 @export var area_3d: Area3D

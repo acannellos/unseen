@@ -6,6 +6,9 @@ var player: Player
 var is_speaking: bool = false
 var is_light_on: bool = false
 
+var needs_first_click: bool = true
+
+var flag_train_switch_01: bool = false
 var flag_train_dialogue_01: bool = false
 
 func _ready() -> void:
