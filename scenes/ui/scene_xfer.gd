@@ -9,8 +9,6 @@ func wipe(direction: String = "up"):
 	color_rect.visible = true
 	var tween = self.create_tween()
 	
-	var up_time: float = 0.1
-	
 	match direction:
 		"up":
 			color_rect.size.y = 0
