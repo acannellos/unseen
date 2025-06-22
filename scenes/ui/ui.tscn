@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1i6kifbp3h3y"]
+[gd_scene load_steps=6 format=3 uid="uid://c1i6kifbp3h3y"]
 
 [ext_resource type="Script" uid="uid://c52eopsmj720q" path="res://scenes/ui/ui.gd" id="1_f5cxw"]
 [ext_resource type="Script" uid="uid://7bul5v4kxvtb" path="res://scenes/ui/interact_label.gd" id="1_u7n8c"]
 [ext_resource type="FontFile" uid="uid://desbiybiknxmj" path="res://assets/fonts/CaviarDreams_Bold.ttf" id="3_aac20"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aac20"]
+font = ExtResource("3_aac20")
 
 [sub_resource type="LabelSettings" id="LabelSettings_g5kmx"]
 font = ExtResource("3_aac20")
@@ -25,6 +28,7 @@ offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "[f] to interact"
+label_settings = SubResource("LabelSettings_aac20")
 script = ExtResource("1_u7n8c")
 
 [node name="location_label" type="Label" parent="."]

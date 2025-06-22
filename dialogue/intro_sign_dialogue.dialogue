@@ -1,4 +1,10 @@
 ~ start
 sign: welcom[bgcolor={black}]{e}[/bgcolor]  to [bgcolor={black}]{text}[/bgcolor]. 
 you: you can't make out the rest.
+
+#you: i never really wanted to come to this place [speed=0.2]. . . 
+#you: there've been some odd stories, [wait=1] but its not not really my choice anymore.
+#you: that dude says dope asset's gone missing
+#you: and ive been sent to figure out what's happened em.
+#you: [wave amp=50.0 freq=5.0 connected=1]{so it goes}[/wave].
 => END

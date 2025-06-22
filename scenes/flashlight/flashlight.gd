@@ -43,8 +43,14 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		
+		if Global.needs_first_click:
+			Global.needs_first_click = false
+			return
+		
 		Global.is_light_on = !Global.is_light_on
 		set_all_lights()
+		play_sound()
 	
 	if event is InputEventMouseMotion:		
 		var from = camera.project_ray_origin(event.position)
@@ -61,3 +67,9 @@ func set_all_lights() -> void:
 	visible = Global.is_light_on
 	tex_light_on.visible = Global.is_light_on
 	tex_light_off.visible = !Global.is_light_on
+
+func play_sound() -> void:
+	if visible:
+		Audio.play("sounds/light_switch_on.wav")
+	else:
+		Audio.play("sounds/light_switch_off.wav")

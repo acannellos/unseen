@@ -20,6 +20,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	if Global.is_speaking:
+		timer.paused = true
 		return
 
 	if not is_on_floor():

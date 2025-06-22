@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 	if not Global.flag_train_dialogue_01:
 		await get_tree().create_timer(1.0).timeout
-		#DialogueManager.show_example_dialogue_balloon(self_dialogue_01, "start")
+		DialogueManager.show_example_dialogue_balloon(self_dialogue_01, "start")
 		Global.flag_train_dialogue_01 = true
 	
 	if Scenes.last_scene == "alley":
