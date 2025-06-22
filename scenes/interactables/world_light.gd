@@ -15,8 +15,9 @@ func _on_area_exited(_area) -> void:
 	_area.hide()
 
 func _physics_process(delta: float) -> void:
-	var overlapping_areas = area_3d.get_overlapping_areas()
-	
-	for overlapping_area in overlapping_areas:
-		if visible and (overlapping_area is InvisibleArea or overlapping_area is InvisibleSign):
-			overlapping_area.count_overlaps += 1
+	if area_3d:
+		var overlapping_areas = area_3d.get_overlapping_areas()
+		
+		for overlapping_area in overlapping_areas:
+			if visible and (overlapping_area is InvisibleArea or overlapping_area is InvisibleSign):
+				overlapping_area.count_overlaps += 1

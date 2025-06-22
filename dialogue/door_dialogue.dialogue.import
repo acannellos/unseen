@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b21fmd1u0w37a"
+path="res://.godot/imported/door_dialogue.dialogue-b0277770f1002a8cfd3aaecf479af9e8.tres"
+
+[deps]
+
+source_file="res://dialogue/door_dialogue.dialogue"
+dest_files=["res://.godot/imported/door_dialogue.dialogue-b0277770f1002a8cfd3aaecf479af9e8.tres"]
+
+[params]
+
+defaults=true

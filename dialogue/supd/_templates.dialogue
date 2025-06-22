@@ -9,4 +9,10 @@ spy: [wave amp=50.0 freq=5.0 connected=1]{so it goes}[/wave].
 - Start again => start
 - End the conversation => END
 spy: For more information see the online documentation.
+
+#you: i never really wanted to come to this place [speed=0.2]. . . 
+#you: there've been some odd stories, [wait=1] but its not not really my choice anymore.
+#you: that dude says dope asset's gone missing
+#you: and ive been sent to figure out what's happened em.
+#you: [wave amp=50.0 freq=5.0 connected=1]{so it goes}[/wave].
 => END
