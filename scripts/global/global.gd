@@ -10,6 +10,13 @@ var needs_first_click: bool = true
 
 var flag_train_switch_01: bool = false
 var flag_train_dialogue_01: bool = false
+var flag_alley_dialogue_01: bool = false
+
+var flag_has_been_to_town: bool = false
+var flag_has_tried_door: bool = false
+var flag_has_key: bool = false
+
+var count_bum_interactions: int = 0
 
 func _ready() -> void:
 	await get_tree().physics_frame

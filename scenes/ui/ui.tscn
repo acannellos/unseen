@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1i6kifbp3h3y"]
+[gd_scene load_steps=9 format=3 uid="uid://c1i6kifbp3h3y"]
 
 [ext_resource type="Script" uid="uid://c52eopsmj720q" path="res://scenes/ui/ui.gd" id="1_f5cxw"]
 [ext_resource type="Script" uid="uid://7bul5v4kxvtb" path="res://scenes/ui/interact_label.gd" id="1_u7n8c"]
@@ -10,9 +10,48 @@ font = ExtResource("3_aac20")
 [sub_resource type="LabelSettings" id="LabelSettings_g5kmx"]
 font = ExtResource("3_aac20")
 
-[node name="ui" type="CanvasLayer" node_paths=PackedStringArray("location_label")]
+[sub_resource type="Animation" id="Animation_aac20"]
+resource_name = "end_game"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g5kmx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0dwhk"]
+_data = {
+&"RESET": SubResource("Animation_g5kmx"),
+&"end_game": SubResource("Animation_aac20")
+}
+
+[node name="ui" type="CanvasLayer" node_paths=PackedStringArray("location_label", "color_rect", "animation_player")]
 script = ExtResource("1_f5cxw")
 location_label = NodePath("location_label")
+color_rect = NodePath("ColorRect")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="interact_label" type="Label" parent="."]
 visible = false
@@ -38,3 +77,17 @@ offset_right = 131.0
 offset_bottom = 54.0
 text = "test location"
 label_settings = SubResource("LabelSettings_g5kmx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.027451, 0.0352941, 0.105882, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0dwhk")
+}

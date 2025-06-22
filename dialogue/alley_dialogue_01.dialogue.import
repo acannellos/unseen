@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cejqasafifols"
+path="res://.godot/imported/alley_dialogue_01.dialogue-36c8947f5b30a8719a28652318c429c7.tres"
+
+[deps]
+
+source_file="res://dialogue/alley_dialogue_01.dialogue"
+dest_files=["res://.godot/imported/alley_dialogue_01.dialogue-36c8947f5b30a8719a28652318c429c7.tres"]
+
+[params]
+
+defaults=true

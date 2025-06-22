@@ -5,6 +5,9 @@ extends Area3D
 var count_overlaps: int = 0
 
 func _physics_process(delta: float) -> void:
+	
+	if Global.flag_has_key:
+		count_overlaps += 1
 
 	#if visible:
 	if count_overlaps > 0:

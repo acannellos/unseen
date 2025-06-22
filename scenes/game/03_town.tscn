@@ -1,10 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://dc3g803l8bxsg"]
+[gd_scene load_steps=41 format=3 uid="uid://dc3g803l8bxsg"]
 
 [ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="1_d0qum"]
 [ext_resource type="Script" uid="uid://bn61va2ovt4xl" path="res://scenes/game/scripts/town.gd" id="1_klhe0"]
 [ext_resource type="PackedScene" uid="uid://c1i6kifbp3h3y" path="res://scenes/ui/ui.tscn" id="2_683l5"]
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="4_h6bvs"]
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="4_xa8uo"]
+[ext_resource type="Script" uid="uid://bb2wkvxlsjtw0" path="res://scenes/interactables/invisible_area.gd" id="6_gpfer"]
+[ext_resource type="Script" uid="uid://ygadeibcje10" path="res://scenes/game/interactable_body.gd" id="7_vtkdx"]
+[ext_resource type="Resource" uid="uid://b21fmd1u0w37a" path="res://dialogue/door_dialogue.dialogue" id="8_vtkdx"]
+[ext_resource type="Resource" uid="uid://c2qvg2b6ol86x" path="res://dialogue/end_dialogue.dialogue" id="9_h6bvs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxnto"]
 size = Vector3(5, 5, 5)
@@ -82,16 +86,30 @@ size = Vector3(10, 12, 10)
 data = PackedVector3Array(-5, 6, 5, 5, 6, 5, -5, -6, 5, 5, 6, 5, 5, -6, 5, -5, -6, 5, 5, 6, -5, -5, 6, -5, 5, -6, -5, -5, 6, -5, -5, -6, -5, 5, -6, -5, 5, 6, 5, 5, 6, -5, 5, -6, 5, 5, 6, -5, 5, -6, -5, 5, -6, 5, -5, 6, -5, -5, 6, 5, -5, -6, -5, -5, 6, 5, -5, -6, 5, -5, -6, -5, 5, 6, 5, -5, 6, 5, 5, 6, -5, -5, 6, 5, -5, 6, -5, 5, 6, -5, -5, -6, 5, 5, -6, 5, -5, -6, -5, 5, -6, 5, 5, -6, -5, -5, -6, -5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3a8i7"]
-size = Vector3(10, 42, 10)
+size = Vector3(20, 42, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aemq1"]
-data = PackedVector3Array(-5, 21, 5, 5, 21, 5, -5, -21, 5, 5, 21, 5, 5, -21, 5, -5, -21, 5, 5, 21, -5, -5, 21, -5, 5, -21, -5, -5, 21, -5, -5, -21, -5, 5, -21, -5, 5, 21, 5, 5, 21, -5, 5, -21, 5, 5, 21, -5, 5, -21, -5, 5, -21, 5, -5, 21, -5, -5, 21, 5, -5, -21, -5, -5, 21, 5, -5, -21, 5, -5, -21, -5, 5, 21, 5, -5, 21, 5, 5, 21, -5, -5, 21, 5, -5, 21, -5, 5, 21, -5, -5, -21, 5, 5, -21, 5, -5, -21, -5, 5, -21, 5, 5, -21, -5, -5, -21, -5)
+data = PackedVector3Array(-10, 21, 10, 10, 21, 10, -10, -21, 10, 10, 21, 10, 10, -21, 10, -10, -21, 10, 10, 21, -10, -10, 21, -10, 10, -21, -10, -10, 21, -10, -10, -21, -10, 10, -21, -10, 10, 21, 10, 10, 21, -10, 10, -21, 10, 10, 21, -10, 10, -21, -10, 10, -21, 10, -10, 21, -10, -10, 21, 10, -10, -21, -10, -10, 21, 10, -10, -21, 10, -10, -21, -10, 10, 21, 10, -10, 21, 10, 10, 21, -10, -10, 21, 10, -10, 21, -10, 10, 21, -10, -10, -21, 10, 10, -21, 10, -10, -21, -10, 10, -21, 10, 10, -21, -10, -10, -21, -10)
 
-[node name="town" type="Node3D" node_paths=PackedStringArray("exit_area")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_h6bvs"]
+size = Vector3(3, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x2qe7"]
+size = Vector3(2, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpfer"]
+albedo_color = Color(0.13, 0.0641333, 0.0312, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d5uah"]
+data = PackedVector3Array(-1, 2, 0.5, 1, 2, 0.5, -1, -2, 0.5, 1, 2, 0.5, 1, -2, 0.5, -1, -2, 0.5, 1, 2, -0.5, -1, 2, -0.5, 1, -2, -0.5, -1, 2, -0.5, -1, -2, -0.5, 1, -2, -0.5, 1, 2, 0.5, 1, 2, -0.5, 1, -2, 0.5, 1, 2, -0.5, 1, -2, -0.5, 1, -2, 0.5, -1, 2, -0.5, -1, 2, 0.5, -1, -2, -0.5, -1, 2, 0.5, -1, -2, 0.5, -1, -2, -0.5, 1, 2, 0.5, -1, 2, 0.5, 1, 2, -0.5, -1, 2, 0.5, -1, 2, -0.5, 1, 2, -0.5, -1, -2, 0.5, 1, -2, 0.5, -1, -2, -0.5, 1, -2, 0.5, 1, -2, -0.5, -1, -2, -0.5)
+
+[node name="town" type="Node3D" node_paths=PackedStringArray("exit_area", "door_body")]
 script = ExtResource("1_klhe0")
 exit_area = NodePath("exit_area")
+door_body = NodePath("world/bld/door/door_body")
 
-[node name="ui" parent="." instance=ExtResource("2_683l5")]
+[node name="ui" parent="." node_paths=PackedStringArray("interactable_body") instance=ExtResource("2_683l5")]
+interactable_body = NodePath("../world/bld/door/door_body")
 
 [node name="env" parent="." instance=ExtResource("4_h6bvs")]
 
@@ -128,7 +146,7 @@ surface_material_override/0 = ExtResource("4_xa8uo")
 shape = SubResource("ConcavePolygonShape3D_7qudb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="world"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -19)
 mesh = SubResource("BoxMesh_dxnto")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="world/MeshInstance3D"]
@@ -164,7 +182,7 @@ mesh = SubResource("BoxMesh_dxnto")
 shape = SubResource("ConcavePolygonShape3D_7xu2q")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="world"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44, 6, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39, 6, 0)
 mesh = SubResource("BoxMesh_dxnto")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="world/MeshInstance3D5"]
@@ -200,12 +218,30 @@ mesh = SubResource("BoxMesh_vtkdx")
 shape = SubResource("ConcavePolygonShape3D_x2qe7")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="world"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 6, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 6, 20)
 mesh = SubResource("BoxMesh_h6bvs")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="world/MeshInstance3D12"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="world/MeshInstance3D12/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_iciuj")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 6, 10)
+mesh = SubResource("BoxMesh_h6bvs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world/MeshInstance3D13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/MeshInstance3D13/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_iciuj")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 6, 28)
+mesh = SubResource("BoxMesh_h6bvs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world/MeshInstance3D14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/MeshInstance3D14/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iciuj")
 
 [node name="MeshInstance3D15" type="MeshInstance3D" parent="world"]
@@ -235,20 +271,47 @@ mesh = SubResource("BoxMesh_oo7xw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="world/MeshInstance3D10/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2euhq")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="world"]
-transform = Transform3D(0.960469, 0, 0.278388, 0, 1, 0, -0.278388, 0, 0.960469, -27.5221, 21, -16.7628)
+[node name="bld" type="MeshInstance3D" parent="world"]
+transform = Transform3D(0.960469, 0, 0.278388, 0, 1, 0, -0.278388, 0, 0.960469, -8.5221, 21, -9.7628)
 mesh = SubResource("BoxMesh_3a8i7")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="world/MeshInstance3D11"]
+[node name="StaticBody3D" type="StaticBody3D" parent="world/bld"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/MeshInstance3D11/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/bld/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_aemq1")
 
-[node name="lights" type="Node" parent="."]
+[node name="door" type="Area3D" parent="world/bld" node_paths=PackedStringArray("body")]
+transform = Transform3D(0.999999, 0, 1.78814e-07, 0, 1, 0, -1.78814e-07, 0, 0.999999, 3.42435, -18, 9.73826)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("6_gpfer")
+body = NodePath("door_body")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="lights"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 37.2083, 1.57132, 23.0905)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/bld/door"]
+shape = SubResource("BoxShape3D_h6bvs")
+
+[node name="door_body" type="StaticBody3D" parent="world/bld/door"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("7_vtkdx")
+dialogue = ExtResource("8_vtkdx")
+use_signal = true
+is_end_game = true
+end_dialogue = ExtResource("9_h6bvs")
+metadata/_custom_type_script = "uid://ygadeibcje10"
+
+[node name="mesh" type="MeshInstance3D" parent="world/bld/door/door_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+mesh = SubResource("BoxMesh_x2qe7")
+surface_material_override/0 = SubResource("StandardMaterial3D_gpfer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/bld/door/door_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+shape = SubResource("ConcavePolygonShape3D_d5uah")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="world"]
+transform = Transform3D(0.433013, -0.5, 0.75, 0.25, 0.866025, 0.433013, -0.866025, 1.51997e-08, 0.5, 24.2083, 10.5713, 13.0905)
 light_energy = 16.0
 shadow_enabled = true
 spot_range = 20.0
@@ -256,8 +319,8 @@ spot_attenuation = 0.1
 spot_angle = 20.0
 spot_angle_attenuation = 0.1
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="lights"]
-transform = Transform3D(0.956996, 0, -0.290101, 0, 1, 0, 0.290101, 0, 0.956996, -34.9368, 1.57132, 31.5606)
+[node name="SpotLight3D2" type="SpotLight3D" parent="world"]
+transform = Transform3D(0.956996, 7.71341e-09, -0.290101, 0.14505, 0.866025, 0.478498, 0.251235, -0.5, 0.828783, -39.9368, 7.57132, 27.5606)
 light_energy = 16.0
 shadow_enabled = true
 spot_range = 20.0
@@ -265,7 +328,16 @@ spot_attenuation = 0.1
 spot_angle = 20.0
 spot_angle_attenuation = 0.1
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="lights"]
+[node name="SpotLight3D3" type="SpotLight3D" parent="world"]
+transform = Transform3D(-0.99941, -9.30773e-10, 0.0343587, 0.00889268, 0.965926, 0.258666, -0.0331879, 0.258819, -0.965356, 2.7611, 4.57132, -14.7494)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 20.0
+spot_attenuation = 0.1
+spot_angle = 20.0
+spot_angle_attenuation = 0.1
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="world"]
 transform = Transform3D(0.999471, 0, -0.0325272, 0, 1, 0, 0.0325272, 0, 0.999471, 0.0632019, 1.57132, 51.5606)
 light_energy = 16.0
 shadow_enabled = true
@@ -273,14 +345,3 @@ spot_range = 20.0
 spot_attenuation = 0.1
 spot_angle = 20.0
 spot_angle_attenuation = 0.1
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="lights"]
-transform = Transform3D(-0.99941, 0, 0.0343587, 0, 1, 0, -0.0343587, 0, -0.99941, -23.2389, 1.57132, -28.7494)
-light_energy = 16.0
-shadow_enabled = true
-spot_range = 20.0
-spot_attenuation = 0.1
-spot_angle = 20.0
-spot_angle_attenuation = 0.1
-
-[node name="objects" type="Node" parent="."]

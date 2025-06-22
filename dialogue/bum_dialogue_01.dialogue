@@ -1,0 +1,26 @@
+~ start
+if Global.count_bum_interactions < 1
+	bum : well hello there.
+elif Global.count_bum_interactions == 1
+	bum : can i help you with something?
+else
+	if not Global.flag_has_been_to_town
+		bum : you're wondering where you are? i'm afraid i'm lost myself.
+	else
+		bum : the town is pretty quite these days. seems everyone has moved away[speed=0.2]. . . 
+		bum : can't really blame them for not wanting to stay after the war.
+		if Global.flag_has_tried_door
+			bum : the door? yes i have the key, do you want it?
+			- yes
+				bum : going in would mean waking up - [wave amp=20.0 freq=2.0 connected=1]game over[/wave] - are you sure you want to go in there?
+				- yes
+					you : you got it.
+					do Global.flag_has_key = true
+				- no
+					bum: it's [wave amp=20.0 freq=2.0 connected=1]ok by me[/wave] if we stay a little longer if you want
+			- no
+				bum: it's [wave amp=20.0 freq=2.0 connected=1]ok by me[/wave] if we stay a little longer if you want
+			- end the conversation => END
+
+do Global.count_bum_interactions += 1
+=> END
