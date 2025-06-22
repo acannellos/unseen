@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtprq0cycwjh0"]
+[gd_scene load_steps=18 format=3 uid="uid://dtprq0cycwjh0"]
 
 [ext_resource type="Script" uid="uid://j8eksil8vxmt" path="res://scenes/game/scripts/alley.gd" id="1_7a65f"]
 [ext_resource type="PackedScene" uid="uid://c7la581tjpoe2" path="res://scenes/world/env.tscn" id="2_7a65f"]
+[ext_resource type="PackedScene" uid="uid://c1i6kifbp3h3y" path="res://scenes/ui/ui.tscn" id="2_l1gjr"]
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="3_dwtt1"]
 [ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="4_ix50v"]
 [ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/scripts/flicker_component.gd" id="5_whc84"]
@@ -45,6 +46,8 @@ spawn_pos_train = NodePath("spawn_pos/spawn_from_train")
 spawn_pos_town = NodePath("spawn_pos/spawn_from_town")
 enter_area = NodePath("enter_area")
 exit_area = NodePath("exit_area")
+
+[node name="ui" parent="." instance=ExtResource("2_l1gjr")]
 
 [node name="env" parent="." instance=ExtResource("2_7a65f")]
 

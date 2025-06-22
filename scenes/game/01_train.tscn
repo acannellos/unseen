@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cr6c0y0fooqqb" path="res://assets/mats/mat_dark_blue.tres" id="3_etkum"]
 [ext_resource type="PackedScene" uid="uid://cpfggxvqf6g2b" path="res://scenes/player/player.tscn" id="3_l6sq7"]
 [ext_resource type="Resource" uid="uid://dv1j63w4b0wqk" path="res://dialogue/train_dialogue_01.dialogue" id="3_qwiof"]
-[ext_resource type="Script" uid="uid://7bul5v4kxvtb" path="res://scenes/ui/interact_label.gd" id="3_secdc"]
+[ext_resource type="PackedScene" uid="uid://c1i6kifbp3h3y" path="res://scenes/ui/ui.tscn" id="3_secdc"]
 [ext_resource type="Script" uid="uid://c7ta7ok1g6l83" path="res://scenes/world/scripts/flicker_component.gd" id="5_gkh44"]
 [ext_resource type="Script" uid="uid://cuiiftb0iqpm5" path="res://scenes/interactables/world_light.gd" id="7_t1try"]
 [ext_resource type="Resource" uid="uid://b16n357oao8a4" path="res://dialogue/intro_sign_dialogue.dialogue" id="8_j8erv"]
@@ -87,23 +87,7 @@ exit_area = NodePath("exit_area")
 spawn_pos_alley = NodePath("spawn_pos/spawn_from_alley")
 self_dialogue_01 = ExtResource("3_qwiof")
 
-[node name="ui" type="CanvasLayer" parent="."]
-
-[node name="interact_label" type="Label" parent="ui"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -105.0
-offset_right = 51.0
-offset_bottom = -82.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "[f] to interact"
-script = ExtResource("3_secdc")
+[node name="ui" parent="." instance=ExtResource("3_secdc")]
 
 [node name="env" parent="." instance=ExtResource("3_3p7xb")]
 

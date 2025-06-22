@@ -6,7 +6,7 @@ var rich_text = "[Left Click] for [wave amp=20.0 freq=2.0 connected=1]flashlight
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("play"):
-		Scenes.change_scene("main", "train")
+		Scenes.change_scene("main", "train station")
 
 func _physics_process(delta: float) -> void:
 	if Global.is_light_on:

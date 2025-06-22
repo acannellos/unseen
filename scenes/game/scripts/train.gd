@@ -19,4 +19,4 @@ func _ready() -> void:
 func _on_body_entered(body) -> void:
 	Scenes.scene_xfer.wipe("up")
 	await get_tree().create_timer(0.6).timeout
-	Scenes.change_scene("train", "alley")
+	Scenes.change_scene("train station", "alley")

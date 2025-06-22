@@ -12,7 +12,7 @@ func _ready() -> void:
 	enter_area.connect("body_entered", _on_body_entered_entrance)
 	exit_area.connect("body_entered", _on_body_entered_exit)
 	
-	if Scenes.last_scene == "train":
+	if Scenes.last_scene == "train station":
 		Global.player.global_position = spawn_pos_train.global_position
 	
 	if Scenes.last_scene == "town":
@@ -21,7 +21,7 @@ func _ready() -> void:
 func _on_body_entered_entrance(body) -> void:
 	Scenes.scene_xfer.wipe("down")
 	await get_tree().create_timer(0.5).timeout
-	Scenes.change_scene("alley", "train")
+	Scenes.change_scene("alley", "train station")
 
 func _on_body_entered_exit(body) -> void:
 	await get_tree().physics_frame
